@@ -20,7 +20,7 @@ const App = () => {
     setComponentSize(size);
   };
 
-   const [password, setPassword] = useState('');
+  const [password, setPassword] = useState('');
 
   function generatePassword () {
     fetch('https://random.justyy.workers.dev/api/random/?cached&n=20')
@@ -34,7 +34,7 @@ const App = () => {
           span: 8,
         }}
         wrapperCol={{
-          span: 16,
+          span: 8,
         }}
         layout="horizontal"
         initialValues={{
