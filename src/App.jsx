@@ -20,6 +20,14 @@ const App = () => {
     setComponentSize(size);
   };
 
+   const [password, setPassword] = useState('');
+
+  function generatePassword () {
+    fetch('https://random.justyy.workers.dev/api/random/?cached&n=20')
+      .then(response => response.json())
+      .then(data => setPassword(data));
+  }
+
     return (
       <Form
         labelCol={{
@@ -49,7 +57,7 @@ const App = () => {
           name="username"
           rules={[
             {
-              required: true,
+              required: false,
               message: 'Bitte trage deinen Benutzernamen ein!',
             },
           ]}
@@ -62,12 +70,15 @@ const App = () => {
           name="password"
           rules={[
             {
-              required: true,
+              required: false,
               message: 'Bitte trage dein Passwort ein!',
             },
           ]}
         >
-          <Input.Password/>
+          <Input.Password value={password} />
+          <Button type="primary" htmlType="submit" onClick={generatePassword}>
+            Passwort generieren
+          </Button>
         </Form.Item>
 
         <Form.Item label="Geschlecht">
